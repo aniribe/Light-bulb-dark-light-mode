@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +36,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    _scale = 1 - _controller.value;
     return Scaffold(
       body: Stack(
         children: [
@@ -55,8 +58,58 @@ class _HomePageState extends State<HomePage>
                     color: Colors.grey.shade900,
                     borderRadius: BorderRadius.circular(50)),
               )),
+          _isOn
+              ? Positioned(
+                  left: MediaQuery.of(context).size.width / 2 - 75,
+                  right: MediaQuery.of(context).size.width / 2 - 75,
+                  top: 202,
+                  child: Transform.scale(
+                    scale: _scale,
+                    child: Transform.rotate(
+                      angle: pi / 1,
+                      child: GestureDetector(
+                          onTapDown: _tapDown,
+                          onTapUp: _tapUp,
+                          onTap: () {
+                            _isOn = false;
+                          },
+                          child: Image.network(
+                            'https://ouch-cdn2.icons8.com/X5fB-F4h5Z-W9fimJnFUJ_So5Z2Kh6ULPuw-I6jK790/rs:fit:784:1134/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNzQ3/LzU1YzYyNmUxLTI5/ZTctNDFmNS04M2Rk/LTZmOTFiMzkwMTQ4/MS5zdmc.png',
+                            width: 150,
+                          )),
+                    ),
+                  ),
+                )
+              : Positioned(
+                  left: MediaQuery.of(context).size.width / 2 - 75,
+                  right: MediaQuery.of(context).size.width / 2 - 75,
+                  top: 202,
+                  child: Transform.scale(
+                    scale: _scale,
+                    child: Transform.rotate(
+                      angle: pi / 1,
+                      child: GestureDetector(
+                          onTapDown: _tapDown,
+                          onTapUp: _tapUp,
+                          onTap: () {
+                            _isOn = true;
+                          },
+                          child: Image.network(
+                            'https://ouch-cdn2.icons8.com/X5fB-F4h5Z-W9fimJnFUJ_So5Z2Kh6ULPuw-I6jK790/rs:fit:784:1134/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNzQ3/LzU1YzYyNmUxLTI5/ZTctNDFmNS04M2Rk/LTZmOTFiMzkwMTQ4/MS5zdmc.png',
+                            width: 150,
+                          )),
+                    ),
+                  )),
         ],
       ),
     );
+  }
+
+  void _tapDown(TapDownDetails details) {
+    _controller.forward();
+  }
+
+  void _tapUp(TapUpDetails details) {
+    _controller.reverse();
   }
 }
