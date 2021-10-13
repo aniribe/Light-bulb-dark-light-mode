@@ -2,7 +2,7 @@
 
 A page with a light bulb that changes color when you click on the light bulb.
 
-<img src="https://github.com/aniribe/Light-bulb-dark-light-mode/blob/main/assets/images/screenshot.jpg" height=500px>
+<img src="https://github.com/aniribe/Light-bulb-dark-light-mode/blob/main/assets/screenshot.jpg" height=500px>
 
 ## Technologies used:
 
